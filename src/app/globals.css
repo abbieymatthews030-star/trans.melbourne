@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #050505;
-  --white: #fff;
-  --black: #050505;
-  --grey: #a5a5a5;
-  --line: #292929;
+  --background: #050505;
+  --foreground: #ffffff;
+  --line: #343434;
+  --muted: #bdbdbd;
 }
 
 * {
@@ -14,13 +13,13 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
+  background: var(--background);
 }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: white;
+  background: var(--background);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -30,16 +29,21 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
+
 .site {
-  width: min(1180px, calc(100% - 40px));
-  margin: auto;
+  width: min(1220px, calc(100% - 48px));
+  margin: 0 auto;
 }
 
 /* HEADER */
 
 .header {
-  height: 70px;
+  height: 66px;
   border-bottom: 1px solid var(--line);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,14 +51,15 @@ a {
 
 .logo {
   font-size: 20px;
+  line-height: 1;
   font-weight: 900;
-  letter-spacing: -.04em;
+  letter-spacing: -0.04em;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 30px;
 }
 
 .nav a {
@@ -62,23 +67,30 @@ a {
   font-weight: 700;
 }
 
-.help {
-  background: white;
-  color: black !important;
-  border-radius: 999px;
-  padding: 10px 17px;
+.nav a:first-child {
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
 }
 
-/* INTRO */
+.helpButton {
+  background: #fff;
+  color: #000 !important;
+  padding: 11px 17px;
+  border-radius: 6px;
+}
+
+/* HERO */
 
 .hero {
-  padding: 27px 4px 24px;
+  padding: 29px 0 22px;
 }
 
 .location {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
+
   font-size: 10px;
+  line-height: 1;
   font-weight: 900;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -86,136 +98,150 @@ a {
 
 .hero h1 {
   margin: 0 0 10px;
-  font-size: clamp(40px, 5vw, 62px);
+
+  max-width: 720px;
+
+  font-size: clamp(44px, 5vw, 65px);
   line-height: .94;
+
   font-weight: 900;
   letter-spacing: -.055em;
 }
 
 .hero p {
   margin: 0;
+
   max-width: 720px;
+
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-/* ==================================================
-   SITUATION PILLS
-   ================================================== */
+/* =========================
+   SITUATION GRID
+   ========================= */
 
-.situations {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 8px 0 30px;
+.situationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 16px 18px;
+
+  padding: 0 0 18px;
 }
 
-.pill {
-  width: 100%;
-  min-height: 112px;
+.situationPill {
+  min-width: 0;
+  min-height: 128px;
 
-  background: #ffffff !important;
-  color: #000000 !important;
+  padding: 15px 24px;
 
-  border: none;
-  border-radius: 999px;
+  background: #ffffff;
+  color: #000000;
 
-  padding: 16px 30px;
+  border-radius: 28px;
 
   display: grid;
-  grid-template-columns: 62px 1px minmax(0, 1fr) 38px;
+  grid-template-columns: 66px 1px minmax(0, 1fr) 30px;
+  gap: 20px;
   align-items: center;
-  column-gap: 24px;
-
-  overflow: hidden;
 
   transition:
-    transform .15s ease,
-    box-shadow .15s ease;
+    transform .14s ease,
+    box-shadow .14s ease;
 }
 
-.pill:hover {
+.situationPill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 0 rgba(255,255,255,.28);
+  box-shadow: 0 5px 0 #888;
 }
 
-.pillIcon {
-  width: 54px;
-  height: 54px;
+.situationPill:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+/* ICON */
+
+.iconCircle {
+  width: 60px;
+  height: 60px;
 
   border: 2px solid #000;
   border-radius: 50%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 
-  color: #000 !important;
+  color: #000;
 
-  font-size: 26px;
-  font-weight: 800;
+  font-size: 31px;
   line-height: 1;
+  font-weight: 500;
 }
 
-.pillDivider {
-  display: block;
+/* VERTICAL LINE */
+
+.divider {
   width: 1px;
-  height: 64px;
-  background: #aaa;
+  height: 70px;
+  background: #999;
 }
 
-.pillCopy {
+/* PILL TEXT */
+
+.situationCopy {
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-.pillCategory {
+.category {
   display: block;
+
   margin-bottom: 6px;
 
-  color: #555 !important;
+  color: #111;
 
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
+
   font-weight: 900;
-  letter-spacing: .11em;
+  letter-spacing: .06em;
+
   text-transform: uppercase;
 }
 
-.pillCopy strong {
+.situationCopy strong {
   display: block;
 
-  color: #000 !important;
+  color: #000;
 
-  font-size: clamp(19px, 2vw, 27px);
-  line-height: 1.08;
+  font-size: clamp(19px, 1.55vw, 25px);
+  line-height: 1.05;
 
   font-weight: 900;
   letter-spacing: -.035em;
 }
 
-.pillArrow {
-  display: block;
+.arrow {
+  color: #000;
+
   justify-self: end;
 
-  color: #000 !important;
-
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 500;
 }
 
-/* BELOW PILLS */
+/* PROMISE */
 
 .promise {
-  min-height: 60px;
+  min-height: 50px;
+
   border-bottom: 1px solid var(--line);
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 
   gap: 7px;
@@ -223,127 +249,155 @@ a {
   font-size: 11px;
 }
 
-.info {
-  width: 17px;
-  height: 17px;
+.infoIcon {
+  width: 18px;
+  height: 18px;
 
   border: 1px solid white;
   border-radius: 50%;
 
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-grid;
+  place-items: center;
+
+  margin-right: 3px;
+
+  font-size: 10px;
+  font-weight: 800;
 }
 
 /* GUIDES */
 
-.guideSection {
-  padding-top: 25px;
+.guides {
+  padding-top: 15px;
 }
 
-.sectionTitle {
+.guideHeading {
+  margin-bottom: 5px;
+
   font-size: 10px;
   font-weight: 900;
-  letter-spacing: .12em;
+
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 
-.guide {
-  min-height: 64px;
+.guideRow {
+  min-height: 49px;
 
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid #2d2d2d;
 
   display: grid;
-  grid-template-columns: 40px 200px 1fr 180px;
-  gap: 16px;
+  grid-template-columns: 40px 220px minmax(0, 1fr) 190px;
+
+  gap: 15px;
+
   align-items: center;
 }
 
 .guideIcon {
-  font-size: 20px;
+  font-size: 21px;
+  text-align: center;
 }
 
-.guide h2 {
+.guideRow h2 {
   margin: 0;
-  font-size: 16px;
+
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.guide p {
+.guideRow p {
   margin: 0;
-  font-size: 11px;
-  line-height: 1.35;
+
+  max-width: 590px;
+
+  font-size: 10px;
+  line-height: 1.15;
 }
 
-.guide button {
-  padding: 8px 12px;
+.guideRow button {
+  min-height: 29px;
+
+  padding: 5px 12px;
 
   background: transparent;
   color: white;
 
-  border: 1px solid #555;
-  border-radius: 999px;
+  border: 1px solid #666;
+  border-radius: 4px;
+
+  font-size: 10px;
 }
 
 /* FOOTER */
 
 .footer {
-  padding: 30px 0 50px;
+  padding: 25px 0 38px;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 35px;
+  grid-template-columns: 1fr 1fr 1fr .95fr;
+
+  gap: 50px;
 }
 
 .footer h3 {
-  margin: 0 0 8px;
-  font-size: 11px;
+  margin: 0 0 9px;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
-.footer p,
-.emergency {
+.footer p {
   margin: 0;
+
   font-size: 11px;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .emergency {
-  border: 1px solid #555;
-  border-radius: 18px;
-  padding: 15px;
+  min-height: 80px;
+
+  padding: 14px 18px;
+
+  border: 1px solid #777;
+  border-radius: 5px;
+
   display: flex;
   flex-direction: column;
+
+  font-size: 11px;
 }
 
 .emergency strong {
   font-size: 16px;
 }
 
-/* TABLET */
+/* =========================
+   TABLET
+   ========================= */
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .site {
-    width: min(700px, calc(100% - 28px));
+    width: min(720px, calc(100% - 32px));
   }
 
-  .pill {
-    min-height: 105px;
-    padding: 15px 24px;
-    grid-template-columns: 54px 1px minmax(0,1fr) 28px;
-    column-gap: 18px;
+  .situationGrid {
+    grid-template-columns: 1fr;
   }
 
-  .pillIcon {
-    width: 48px;
-    height: 48px;
-    font-size: 22px;
+  .situationPill {
+    min-height: 110px;
   }
 
-  .guide {
-    grid-template-columns: 35px 150px 1fr;
-    padding: 12px 0;
+  .guideRow {
+    grid-template-columns: 35px 160px 1fr;
+    padding: 9px 0;
   }
 
-  .guide button {
+  .guideRow button {
     grid-column: 3;
     width: fit-content;
   }
@@ -353,9 +407,11 @@ a {
   }
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .site {
     width: calc(100% - 20px);
   }
@@ -368,87 +424,116 @@ a {
     font-size: 18px;
   }
 
-  .nav a:not(.help) {
+  .nav {
+    gap: 0;
+  }
+
+  .nav a:not(.helpButton) {
     display: none;
   }
 
+  .helpButton {
+    padding: 9px 13px;
+    font-size: 11px !important;
+  }
+
   .hero {
-    padding: 21px 4px 18px;
+    padding: 22px 2px 18px;
   }
 
   .hero h1 {
-    font-size: 40px;
+    font-size: 42px;
   }
 
   .hero p {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .hero p br {
     display: none;
   }
 
-  .situations {
-    gap: 14px;
+  .situationGrid {
+    gap: 12px;
   }
 
-  .pill {
-    min-height: 94px;
-
-    border-radius: 30px;
+  .situationPill {
+    min-height: 100px;
 
     padding: 13px 15px;
 
-    grid-template-columns: 43px 1px minmax(0,1fr) 18px;
-    column-gap: 11px;
+    border-radius: 24px;
+
+    grid-template-columns: 45px 1px minmax(0, 1fr) 18px;
+
+    gap: 11px;
   }
 
-  .pillIcon {
-    width: 39px;
-    height: 39px;
+  .iconCircle {
+    width: 42px;
+    height: 42px;
 
     border-width: 1.5px;
 
-    font-size: 18px;
+    font-size: 20px;
   }
 
-  .pillDivider {
-    height: 52px;
+  .divider {
+    height: 56px;
   }
 
-  .pillCategory {
-    margin-bottom: 4px;
+  .category {
+    margin-bottom: 5px;
+
     font-size: 8px;
   }
 
-  .pillCopy strong {
+  .situationCopy strong {
     font-size: 16px;
-    line-height: 1.08;
+    line-height: 1.07;
   }
 
-  .pillArrow {
+  .arrow {
     font-size: 19px;
   }
 
   .promise {
     justify-content: flex-start;
-    padding: 14px 5px;
+
+    padding: 13px 5px;
+
+    font-size: 9px;
   }
 
-  .guide {
-    grid-template-columns: 30px 1fr;
+  .guideRow {
+    grid-template-columns: 28px 1fr;
+
+    gap: 7px 10px;
+
+    padding: 12px 0;
   }
 
-  .guide h2 {
+  .guideRow h2 {
     font-size: 14px;
+    font-weight: 700;
   }
 
-  .guide p,
-  .guide button {
+  .guideRow p {
     grid-column: 2;
+
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .guideRow button {
+    grid-column: 2;
+
+    font-size: 9px;
   }
 
   .footer {
     grid-template-columns: 1fr;
+
+    gap: 25px;
   }
 }

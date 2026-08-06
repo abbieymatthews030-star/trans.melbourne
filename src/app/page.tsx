@@ -6,6 +6,12 @@ const situations = [
     href: "#healthcare",
   },
   {
+    icon: "♢",
+    category: "Safety",
+    text: "Someone is threatening, stalking, controlling or monitoring me.",
+    href: "#safety",
+  },
+  {
     icon: "⌂",
     category: "Housing",
     text: "I need somewhere safe to sleep or I’m about to lose my housing.",
@@ -22,12 +28,6 @@ const situations = [
     category: "Jobs",
     text: "I need work or I’m being treated differently because I’m trans.",
     href: "#jobs",
-  },
-  {
-    icon: "♢",
-    category: "Safety",
-    text: "Someone is threatening, stalking, controlling or monitoring me.",
-    href: "#safety",
   },
   {
     icon: "⚖",
@@ -69,6 +69,12 @@ const guides = [
     text: "You do not need to understand the entire medical system first. Start with the exact care you need.",
   },
   {
+    id: "safety",
+    icon: "♢",
+    title: "Safety",
+    text: "Threats, stalking, coercive control and digital monitoring are safety problems. Treat them like one.",
+  },
+  {
     id: "housing",
     icon: "⌂",
     title: "Housing",
@@ -85,12 +91,6 @@ const guides = [
     icon: "▣",
     title: "Jobs",
     text: "An employer does not automatically need every personal detail about your gender, history or transition.",
-  },
-  {
-    id: "safety",
-    icon: "♢",
-    title: "Safety",
-    text: "Threats, stalking, coercive control and digital monitoring are safety problems. Treat them like one.",
   },
   {
     id: "legal",
@@ -128,15 +128,15 @@ export default function Home() {
   return (
     <main className="site">
       <header className="header">
-        <a className="logo" href="#">
+        <a href="#top" className="logo">
           trans.melbourne
         </a>
 
-        <nav className="nav">
+        <nav className="nav" aria-label="Main navigation">
           <a href="#start">Start here</a>
           <a href="#guides">Guides</a>
           <a href="#about">About</a>
-          <a href="#urgent" className="help">
+          <a href="#urgent" className="helpButton">
             Help now
           </a>
         </nav>
@@ -155,28 +155,29 @@ export default function Home() {
           Practical information for trans and gender-diverse people in Melbourne.
           <br />
           Healthcare, housing, money, safety, work, legal help and transition —
+          <br />
           explained quickly.
         </p>
       </section>
 
       <section
-        className="situations"
-        aria-label="Choose what you need help with"
+        className="situationGrid"
+        aria-label="What do you need help with?"
       >
         {situations.map((item) => (
-          <a className="pill" href={item.href} key={item.category}>
-            <span className="pillIcon" aria-hidden="true">
+          <a className="situationPill" href={item.href} key={item.category}>
+            <span className="iconCircle" aria-hidden="true">
               {item.icon}
             </span>
 
-            <span className="pillDivider" />
+            <span className="divider" />
 
-            <span className="pillCopy">
-              <span className="pillCategory">{item.category}</span>
+            <span className="situationCopy">
+              <span className="category">{item.category}</span>
               <strong>{item.text}</strong>
             </span>
 
-            <span className="pillArrow" aria-hidden="true">
+            <span className="arrow" aria-hidden="true">
               →
             </span>
           </a>
@@ -184,63 +185,62 @@ export default function Home() {
       </section>
 
       <div className="promise">
-        <span className="info">i</span>
+        <span className="infoIcon">i</span>
         <span>No account.</span>
         <span>No paywall.</span>
         <span>No twenty-page article before the answer.</span>
         <strong>No bullshit.</strong>
       </div>
 
-      <section className="guideSection" id="guides">
-        <p className="sectionTitle">The short version of each topic</p>
-
-        <div className="guideList">
-          {guides.map((guide) => (
-            <article className="guide" id={guide.id} key={guide.id}>
-              <span className="guideIcon">{guide.icon}</span>
-
-              <h2>{guide.title}</h2>
-
-              <p>{guide.text}</p>
-
-              <button type="button">Full guide coming next</button>
-            </article>
-          ))}
+      <section className="guides" id="guides">
+        <div className="guideHeading">
+          The short version of each topic
         </div>
+
+        {guides.map((guide) => (
+          <article className="guideRow" id={guide.id} key={guide.id}>
+            <span className="guideIcon" aria-hidden="true">
+              {guide.icon}
+            </span>
+
+            <h2>{guide.title}</h2>
+
+            <p>{guide.text}</p>
+
+            <button type="button">Full guide coming next</button>
+          </article>
+        ))}
       </section>
 
       <footer className="footer" id="about">
-        <div>
+        <section>
           <h3>About trans.melbourne</h3>
           <p>
             Built to get you to the answer faster.
-            <br />
             This is information, not individual medical or legal advice.
           </p>
-        </div>
+        </section>
 
-        <div>
+        <section>
           <h3>Melbourne, Victoria</h3>
           <p>
             We focus on local services, rights, support and realities in Victoria.
             Things change — we’ll keep this as current as possible.
           </p>
-        </div>
+        </section>
 
-        <div>
+        <section>
           <h3>You matter</h3>
           <p>
             Your safety, health and dignity are more important than anyone
             else&apos;s opinion.
           </p>
-        </div>
+        </section>
 
-        <div className="emergency">
+        <section className="emergency">
           <span>If you are in immediate danger</span>
           <strong>call 000</strong>
-          <span>If you need to talk right now</span>
-          <strong>call 13 11 14</strong>
-        </div>
+        </section>
       </footer>
     </main>
   );
