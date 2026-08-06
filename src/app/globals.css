@@ -530,3 +530,191 @@ footer strong {
     line-height: 1.12;
   }
 }
+
+/* === WHITE SITUATION PILLS === */
+
+:root {
+  --accent: #ffffff !important;
+}
+
+/* Remove all lime/green */
+.eyebrow,
+.sectionLabel,
+.number,
+.topicCard p,
+.urgentCard p,
+.promise strong {
+  color: #ffffff !important;
+}
+
+/* Long pill grid */
+.topicGrid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+/* White elongated pills */
+.topicCard {
+  background: #ffffff !important;
+  color: #000000 !important;
+
+  min-height: 120px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+
+  padding: 18px 30px !important;
+
+  display: grid !important;
+  grid-template-columns: 58px 1fr 36px !important;
+  align-items: center !important;
+  gap: 20px !important;
+
+  transform: none !important;
+}
+
+/* no green hover */
+.topicCard:hover {
+  background: #ffffff !important;
+  border-color: transparent !important;
+  transform: translateY(-2px) !important;
+}
+
+/* icon remains */
+.cardTop {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* icon circle */
+.icon {
+  width: 48px !important;
+  min-width: 48px !important;
+  height: 48px !important;
+
+  border: 2px solid #000000 !important;
+  border-radius: 999px !important;
+
+  color: #000000 !important;
+  background: transparent !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  font-size: 21px !important;
+}
+
+/* text area */
+.cardBody {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* small category */
+.topicCard h2 {
+  margin: 0 0 6px !important;
+
+  color: #555555 !important;
+
+  font-size: 11px !important;
+  line-height: 1 !important;
+
+  font-weight: 800 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+
+/* MAIN SITUATION */
+.topicCard p {
+  margin: 0 !important;
+  max-width: 100% !important;
+
+  color: #000000 !important;
+
+  font-size: clamp(19px, 1.55vw, 26px) !important;
+  line-height: 1.08 !important;
+
+  font-weight: 800 !important;
+  letter-spacing: -.035em !important;
+
+  text-transform: none !important;
+}
+
+/* arrow */
+.arrow {
+  position: static !important;
+
+  color: #000000 !important;
+
+  font-size: 28px !important;
+  font-weight: 700 !important;
+
+  justify-self: end !important;
+}
+
+/* urgent card is ALSO white */
+.urgentCard {
+  background: #ffffff !important;
+  border: 0 !important;
+}
+
+.urgentCard p {
+  color: #000000 !important;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .topicGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .topicCard {
+    min-height: 110px !important;
+  }
+}
+
+/* PHONE */
+@media (max-width: 520px) {
+  .topicGrid {
+    gap: 10px !important;
+  }
+
+  .topicCard {
+    min-height: 96px !important;
+
+    border-radius: 28px !important;
+
+    grid-template-columns: 40px 1fr 22px !important;
+
+    gap: 12px !important;
+
+    padding: 15px 18px !important;
+  }
+
+  .icon {
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+
+    font-size: 16px !important;
+  }
+
+  .topicCard h2 {
+    font-size: 9px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .topicCard p {
+    font-size: 17px !important;
+    line-height: 1.08 !important;
+  }
+
+  .arrow {
+    font-size: 21px !important;
+  }
+}

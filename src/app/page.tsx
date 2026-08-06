@@ -1,239 +1,175 @@
-const topics = [
+const situations = [
   {
-    title: "Healthcare",
-    blunt: "I need hormones or a doctor who actually knows trans healthcare.",
-    href: "#healthcare",
+    category: "Healthcare",
     icon: "♡",
+    text: "I need hormones or a doctor who actually knows trans healthcare.",
+    href: "#healthcare",
   },
   {
-    title: "Housing",
-    blunt: "I need somewhere safe to sleep or I'm about to lose my housing.",
-    href: "#housing",
+    category: "Housing",
     icon: "⌂",
+    text: "I need somewhere safe to sleep or I’m about to lose my housing.",
+    href: "#housing",
   },
   {
-    title: "Money & Centrelink",
-    blunt: "I'm broke, my payment is missing, or I need money for essentials now.",
-    href: "#money",
+    category: "Money & Centrelink",
     icon: "$",
+    text: "I’m broke, my payment is missing, or I need money for essentials now.",
+    href: "#money",
   },
   {
-    title: "Jobs",
-    blunt: "I need work or I'm being treated differently because I'm trans.",
-    href: "#jobs",
+    category: "Jobs",
     icon: "▣",
+    text: "I need work or I’m being treated differently because I’m trans.",
+    href: "#jobs",
   },
   {
-    title: "Safety",
-    blunt: "Someone is threatening, stalking, controlling or monitoring me.",
+    category: "Safety",
+    icon: "♢",
+    text: "Someone is threatening, stalking, controlling or monitoring me.",
     href: "#safety",
-    icon: "◇",
   },
   {
-    title: "Legal",
-    blunt: "I'm dealing with police, court, discrimination or an intervention order.",
-    href: "#legal",
+    category: "Legal",
     icon: "⚖",
+    text: "I’m dealing with police, court, discrimination or an intervention order.",
+    href: "#legal",
   },
   {
-    title: "Name & ID",
-    blunt: "My documents have the wrong name or gender and I want them changed.",
-    href: "#documents",
+    category: "Name & ID",
     icon: "▤",
+    text: "My documents have the wrong name or gender and I want them changed.",
+    href: "#documents",
   },
   {
-    title: "Transition",
-    blunt: "I want to transition but I don't actually know where to start.",
-    href: "#transition",
+    category: "Transition",
     icon: "○",
+    text: "I want to transition but I don’t actually know where to start.",
+    href: "#transition",
   },
   {
-    title: "Community",
-    blunt: "I want trans-friendly people, places and services near me.",
-    href: "#community",
+    category: "Community",
     icon: "◎",
+    text: "I want trans-friendly people, places and services near me.",
+    href: "#community",
   },
   {
-    title: "Urgent help",
-    blunt: "I'm not safe right now and I need help immediately.",
-    href: "#urgent",
+    category: "Urgent help",
     icon: "!",
-    urgent: true,
+    text: "I’m not safe right now and I need help immediately.",
+    href: "#urgent",
   },
 ];
 
 const guides = [
-  {
-    id: "healthcare",
-    title: "Healthcare",
-    short:
-      "You do not need to understand the entire medical system first. Start with the exact care you need.",
-  },
-  {
-    id: "housing",
-    title: "Housing",
-    short:
-      "If you might have nowhere safe to sleep, deal with tonight first. Applications and paperwork come second.",
-  },
-  {
-    id: "money",
-    title: "Money & Centrelink",
-    short:
-      "If you cannot afford essentials, check immediate assistance instead of assuming you must wait for your next payment.",
-  },
-  {
-    id: "jobs",
-    title: "Jobs",
-    short:
-      "An employer does not automatically need every personal detail about your gender, history or transition.",
-  },
-  {
-    id: "safety",
-    title: "Safety",
-    short:
-      "Threats, stalking, coercive control and digital monitoring are safety problems. Treat them like one.",
-  },
-  {
-    id: "legal",
-    title: "Legal",
-    short:
-      "Save evidence. Write down what happened. Get proper advice before assuming nothing can be done.",
-  },
-  {
-    id: "documents",
-    title: "Change your name & ID",
-    short:
-      "Start with the foundational identity documents. Updating everything else is easier afterwards.",
-  },
-  {
-    id: "transition",
-    title: "Transition",
-    short:
-      "There is no mandatory transition checklist. Hormones, surgery, presentation, voice and documents are separate choices.",
-  },
-  {
-    id: "community",
-    title: "Community",
-    short:
-      "You do not need to navigate Melbourne's services, spaces and community entirely by yourself.",
-  },
-  {
-    id: "urgent",
-    title: "Need help right now?",
-    short:
-      "If there is immediate danger, prioritise getting somewhere safe and contacting emergency support over everything else.",
-  },
+  ["healthcare", "Healthcare", "You do not need to understand the entire medical system first. Start with the exact care you need."],
+  ["housing", "Housing", "If you might have nowhere safe to sleep, deal with tonight first. Applications and paperwork come second."],
+  ["money", "Money & Centrelink", "If you cannot afford essentials, check immediate assistance instead of assuming you must wait for your next payment."],
+  ["jobs", "Jobs", "An employer does not automatically need every personal detail about your gender, history or transition."],
+  ["safety", "Safety", "Threats, stalking, coercive control and digital monitoring are safety problems. Treat them like one."],
+  ["legal", "Legal", "Save evidence. Write down what happened. Get proper advice before assuming nothing can be done."],
+  ["documents", "Name & ID", "Start with the foundational identity documents. Updating everything else is easier afterwards."],
+  ["transition", "Transition", "There is no mandatory transition checklist. Hormones, surgery, presentation and documents are separate choices."],
+  ["community", "Community", "You do not need to navigate Melbourne’s services, spaces and community entirely by yourself."],
+  ["urgent", "Urgent help", "If there is immediate danger, prioritise getting somewhere safe and contacting emergency support over everything else."],
 ];
 
 export default function Home() {
   return (
     <main>
       <header className="nav">
-        <a className="brand" href="#">
-          trans.melbourne
-        </a>
+        <a className="brand" href="/">trans.melbourne</a>
 
-        <nav className="navLinks" aria-label="Main navigation">
+        <nav>
           <a href="#start">Start here</a>
           <a href="#guides">Guides</a>
           <a href="#about">About</a>
-          <a href="#urgent">Help now</a>
+          <a className="helpButton" href="#urgent">Help now</a>
         </nav>
       </header>
 
-      <section className="opening" id="start">
-        <div className="intro">
-          <span className="eyebrow">MELBOURNE, VICTORIA</span>
+      <section className="hero" id="start">
+        <div className="eyebrow">Melbourne, Victoria</div>
 
-          <h1>
-            Find what you need. <em>No bullshit.</em>
-          </h1>
+        <h1>
+          Find what you need.
+          <br className="mobileBreak" /> No bullshit.
+        </h1>
 
-          <p>
-            Practical information for trans and gender-diverse people in
-            Melbourne. Healthcare, housing, money, safety, work, legal help and
-            transition — explained quickly.
-          </p>
-        </div>
-
-        <div className="topicGrid" aria-label="Choose what you need help with">
-          {topics.map((topic) => (
-            <a
-              href={topic.href}
-              className={`topicCard ${topic.urgent ? "urgentCard" : ""}`}
-              key={topic.title}
-            >
-              <div className="cardTop">
-                <span className="icon" aria-hidden="true">
-                  {topic.icon}
-                </span>
-              </div>
-
-              <div className="cardBody">
-                <h2>{topic.title}</h2>
-                <p>{topic.blunt}</p>
-              </div>
-
-              <span className="arrow" aria-hidden="true">
-                →
-              </span>
-            </a>
-          ))}
-        </div>
-
-        <div className="promise">
-          <span>ⓘ</span>
-          <p>
-            No account. No paywall. No twenty-page article before the answer.
-            <strong> No bullshit.</strong>
-          </p>
-        </div>
+        <p>
+          Practical information for trans and gender-diverse people in Melbourne.
+          <br />
+          Healthcare, housing, money, safety, work, legal help and transition —
+          explained quickly.
+        </p>
       </section>
+
+      <section className="situationGrid" aria-label="Choose what you need help with">
+        {situations.map((item) => (
+          <a className="situationPill" href={item.href} key={item.category}>
+            <div className="pillIcon" aria-hidden="true">
+              {item.icon}
+            </div>
+
+            <div className="pillContent">
+              <span className="pillCategory">{item.category}</span>
+              <strong>{item.text}</strong>
+            </div>
+
+            <span className="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </section>
+
+      <div className="promise">
+        <span>ⓘ</span>
+        <span>No account.</span>
+        <span>No paywall.</span>
+        <span>No twenty-page article before the answer.</span>
+        <strong>No bullshit.</strong>
+      </div>
 
       <section className="guides" id="guides">
-        <div className="sectionLabel">THE SHORT VERSION OF EACH TOPIC</div>
+        <div className="sectionLabel">The short version of each topic</div>
 
-        <div className="guideRows">
-          {guides.map((guide) => (
-            <article className="guideRow" id={guide.id} key={guide.id}>
-              <h2>{guide.title}</h2>
-
-              <p>{guide.short}</p>
-
-              <span className="coming">Full guide coming next</span>
-            </article>
-          ))}
-        </div>
+        {guides.map(([id, title, description]) => (
+          <article className="guideRow" id={id} key={id}>
+            <h2>{title}</h2>
+            <p>{description}</p>
+            <button type="button">Full guide coming next</button>
+          </article>
+        ))}
       </section>
 
-      <section className="about" id="about">
+      <footer id="about">
         <div>
-          <span className="sectionLabel">ABOUT TRANS.MELBOURNE</span>
-          <h2>Built to get you to the answer faster.</h2>
+          <h3>About trans.melbourne</h3>
           <p>
+            Built to get you to the answer faster.
             This is information, not individual medical or legal advice.
           </p>
         </div>
 
         <div>
-          <span className="sectionLabel">MELBOURNE, VICTORIA</span>
+          <h3>Melbourne, Victoria</h3>
           <p>
-            Focused on local services, rights, support and realities in
-            Victoria.
+            We focus on local services, rights, support and realities in Victoria.
+            Things change — we’ll keep this as current as possible.
           </p>
         </div>
 
         <div>
-          <span className="sectionLabel">THE RULE</span>
+          <h3>You matter</h3>
           <p>
-            Give the useful answer first. Explain the complicated stuff second.
+            Your safety, health and dignity are more important than anyone else’s
+            opinion.
           </p>
         </div>
-      </section>
 
-      <footer>
-        <strong>trans.melbourne</strong>
-        <span>Melbourne, Victoria</span>
+        <div className="emergency">
+          <p>If you are in immediate danger</p>
+          <strong>call 000</strong>
+        </div>
       </footer>
     </main>
   );
