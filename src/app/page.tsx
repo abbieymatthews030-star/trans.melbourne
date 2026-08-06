@@ -1,69 +1,59 @@
 const topics = [
   {
-    n: "01",
     title: "Healthcare",
     blunt: "I need hormones or a doctor who actually knows trans healthcare.",
     href: "#healthcare",
     icon: "♡",
   },
   {
-    n: "02",
     title: "Housing",
     blunt: "I need somewhere safe to sleep or I'm about to lose my housing.",
     href: "#housing",
     icon: "⌂",
   },
   {
-    n: "03",
     title: "Money & Centrelink",
     blunt: "I'm broke, my payment is missing, or I need money for essentials now.",
     href: "#money",
     icon: "$",
   },
   {
-    n: "04",
     title: "Jobs",
     blunt: "I need work or I'm being treated differently because I'm trans.",
     href: "#jobs",
     icon: "▣",
   },
   {
-    n: "05",
     title: "Safety",
     blunt: "Someone is threatening, stalking, controlling or monitoring me.",
     href: "#safety",
     icon: "◇",
   },
   {
-    n: "06",
     title: "Legal",
     blunt: "I'm dealing with police, court, discrimination or an intervention order.",
     href: "#legal",
     icon: "⚖",
   },
   {
-    n: "07",
     title: "Name & ID",
     blunt: "My documents have the wrong name or gender and I want them changed.",
     href: "#documents",
     icon: "▤",
   },
   {
-    n: "08",
     title: "Transition",
     blunt: "I want to transition but I don't actually know where to start.",
     href: "#transition",
     icon: "○",
   },
   {
-    n: "09",
     title: "Community",
     blunt: "I want trans-friendly people, places and services near me.",
     href: "#community",
     icon: "◎",
   },
   {
-    n: "10",
     title: "Urgent help",
     blunt: "I'm not safe right now and I need help immediately.",
     href: "#urgent",
@@ -174,7 +164,6 @@ export default function Home() {
               key={topic.title}
             >
               <div className="cardTop">
-                <span className="number">{topic.n}</span>
                 <span className="icon" aria-hidden="true">
                   {topic.icon}
                 </span>
