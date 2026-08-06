@@ -1,99 +1,154 @@
 const situations = [
   {
-    category: "Healthcare",
     icon: "♡",
+    category: "Healthcare",
     text: "I need hormones or a doctor who actually knows trans healthcare.",
     href: "#healthcare",
   },
   {
-    category: "Housing",
     icon: "⌂",
+    category: "Housing",
     text: "I need somewhere safe to sleep or I’m about to lose my housing.",
     href: "#housing",
   },
   {
-    category: "Money & Centrelink",
     icon: "$",
+    category: "Money & Centrelink",
     text: "I’m broke, my payment is missing, or I need money for essentials now.",
     href: "#money",
   },
   {
-    category: "Jobs",
     icon: "▣",
+    category: "Jobs",
     text: "I need work or I’m being treated differently because I’m trans.",
     href: "#jobs",
   },
   {
-    category: "Safety",
     icon: "♢",
+    category: "Safety",
     text: "Someone is threatening, stalking, controlling or monitoring me.",
     href: "#safety",
   },
   {
-    category: "Legal",
     icon: "⚖",
+    category: "Legal",
     text: "I’m dealing with police, court, discrimination or an intervention order.",
     href: "#legal",
   },
   {
-    category: "Name & ID",
     icon: "▤",
+    category: "Name & ID",
     text: "My documents have the wrong name or gender and I want them changed.",
     href: "#documents",
   },
   {
-    category: "Transition",
     icon: "○",
+    category: "Transition",
     text: "I want to transition but I don’t actually know where to start.",
     href: "#transition",
   },
   {
-    category: "Community",
     icon: "◎",
+    category: "Community",
     text: "I want trans-friendly people, places and services near me.",
     href: "#community",
   },
   {
-    category: "Urgent help",
     icon: "!",
+    category: "Urgent help",
     text: "I’m not safe right now and I need help immediately.",
     href: "#urgent",
   },
 ];
 
 const guides = [
-  ["healthcare", "Healthcare", "You do not need to understand the entire medical system first. Start with the exact care you need."],
-  ["housing", "Housing", "If you might have nowhere safe to sleep, deal with tonight first. Applications and paperwork come second."],
-  ["money", "Money & Centrelink", "If you cannot afford essentials, check immediate assistance instead of assuming you must wait for your next payment."],
-  ["jobs", "Jobs", "An employer does not automatically need every personal detail about your gender, history or transition."],
-  ["safety", "Safety", "Threats, stalking, coercive control and digital monitoring are safety problems. Treat them like one."],
-  ["legal", "Legal", "Save evidence. Write down what happened. Get proper advice before assuming nothing can be done."],
-  ["documents", "Name & ID", "Start with the foundational identity documents. Updating everything else is easier afterwards."],
-  ["transition", "Transition", "There is no mandatory transition checklist. Hormones, surgery, presentation and documents are separate choices."],
-  ["community", "Community", "You do not need to navigate Melbourne’s services, spaces and community entirely by yourself."],
-  ["urgent", "Urgent help", "If there is immediate danger, prioritise getting somewhere safe and contacting emergency support over everything else."],
+  {
+    id: "healthcare",
+    icon: "♡",
+    title: "Healthcare",
+    text: "You do not need to understand the entire medical system first. Start with the exact care you need.",
+  },
+  {
+    id: "housing",
+    icon: "⌂",
+    title: "Housing",
+    text: "If you might have nowhere safe to sleep, deal with tonight first. Applications and paperwork come second.",
+  },
+  {
+    id: "money",
+    icon: "$",
+    title: "Money & Centrelink",
+    text: "If you cannot afford essentials, check immediate assistance instead of assuming you must wait for your next payment.",
+  },
+  {
+    id: "jobs",
+    icon: "▣",
+    title: "Jobs",
+    text: "An employer does not automatically need every personal detail about your gender, history or transition.",
+  },
+  {
+    id: "safety",
+    icon: "♢",
+    title: "Safety",
+    text: "Threats, stalking, coercive control and digital monitoring are safety problems. Treat them like one.",
+  },
+  {
+    id: "legal",
+    icon: "⚖",
+    title: "Legal",
+    text: "Save evidence. Write down what happened. Get proper advice before assuming nothing can be done.",
+  },
+  {
+    id: "documents",
+    icon: "▤",
+    title: "Name & ID",
+    text: "Start with the foundational identity documents. Updating everything else is easier afterwards.",
+  },
+  {
+    id: "transition",
+    icon: "○",
+    title: "Transition",
+    text: "There is no mandatory transition checklist. Hormones, surgery, presentation and documents are separate choices.",
+  },
+  {
+    id: "community",
+    icon: "◎",
+    title: "Community",
+    text: "You do not need to navigate Melbourne’s services, spaces and community entirely by yourself.",
+  },
+  {
+    id: "urgent",
+    icon: "!",
+    title: "Urgent help",
+    text: "If there is immediate danger, prioritise getting somewhere safe and contacting emergency support over everything else.",
+  },
 ];
 
 export default function Home() {
   return (
-    <main>
-      <header className="nav">
-        <a className="brand" href="/">trans.melbourne</a>
+    <main className="site">
+      <header className="header">
+        <a className="logo" href="#">
+          trans.melbourne
+        </a>
 
-        <nav>
+        <nav className="nav">
           <a href="#start">Start here</a>
           <a href="#guides">Guides</a>
           <a href="#about">About</a>
-          <a className="helpButton" href="#urgent">Help now</a>
+          <a href="#urgent" className="help">
+            Help now
+          </a>
         </nav>
       </header>
 
       <section className="hero" id="start">
-        <div className="eyebrow">Melbourne, Victoria</div>
+        <span className="location">Melbourne, Victoria</span>
 
         <h1>
           Find what you need.
-          <br className="mobileBreak" /> No bullshit.
+          <br />
+          No bullshit.
         </h1>
 
         <p>
@@ -104,48 +159,62 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="situationGrid" aria-label="Choose what you need help with">
+      <section
+        className="situations"
+        aria-label="Choose what you need help with"
+      >
         {situations.map((item) => (
-          <a className="situationPill" href={item.href} key={item.category}>
-            <div className="pillIcon" aria-hidden="true">
+          <a className="pill" href={item.href} key={item.category}>
+            <span className="pillIcon" aria-hidden="true">
               {item.icon}
-            </div>
+            </span>
 
-            <div className="pillContent">
+            <span className="pillDivider" />
+
+            <span className="pillCopy">
               <span className="pillCategory">{item.category}</span>
               <strong>{item.text}</strong>
-            </div>
+            </span>
 
-            <span className="arrow" aria-hidden="true">→</span>
+            <span className="pillArrow" aria-hidden="true">
+              →
+            </span>
           </a>
         ))}
       </section>
 
       <div className="promise">
-        <span>ⓘ</span>
+        <span className="info">i</span>
         <span>No account.</span>
         <span>No paywall.</span>
         <span>No twenty-page article before the answer.</span>
         <strong>No bullshit.</strong>
       </div>
 
-      <section className="guides" id="guides">
-        <div className="sectionLabel">The short version of each topic</div>
+      <section className="guideSection" id="guides">
+        <p className="sectionTitle">The short version of each topic</p>
 
-        {guides.map(([id, title, description]) => (
-          <article className="guideRow" id={id} key={id}>
-            <h2>{title}</h2>
-            <p>{description}</p>
-            <button type="button">Full guide coming next</button>
-          </article>
-        ))}
+        <div className="guideList">
+          {guides.map((guide) => (
+            <article className="guide" id={guide.id} key={guide.id}>
+              <span className="guideIcon">{guide.icon}</span>
+
+              <h2>{guide.title}</h2>
+
+              <p>{guide.text}</p>
+
+              <button type="button">Full guide coming next</button>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <footer id="about">
+      <footer className="footer" id="about">
         <div>
           <h3>About trans.melbourne</h3>
           <p>
             Built to get you to the answer faster.
+            <br />
             This is information, not individual medical or legal advice.
           </p>
         </div>
@@ -161,14 +230,16 @@ export default function Home() {
         <div>
           <h3>You matter</h3>
           <p>
-            Your safety, health and dignity are more important than anyone else’s
-            opinion.
+            Your safety, health and dignity are more important than anyone
+            else&apos;s opinion.
           </p>
         </div>
 
         <div className="emergency">
-          <p>If you are in immediate danger</p>
+          <span>If you are in immediate danger</span>
           <strong>call 000</strong>
+          <span>If you need to talk right now</span>
+          <strong>call 13 11 14</strong>
         </div>
       </footer>
     </main>
