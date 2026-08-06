@@ -456,3 +456,77 @@ footer strong {
     gap: 8px;
   }
 }
+
+/* Situation-first card hierarchy */
+.topicCard {
+  min-height: 280px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+  padding: 0 0 32px;
+  flex: 1;
+}
+
+.topicCard h2 {
+  order: 1;
+  margin: 0 0 12px;
+  color: #8c8c86;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.topicCard p {
+  order: 2;
+  margin: 0;
+  max-width: 95%;
+  color: var(--text);
+  font-size: clamp(20px, 1.65vw, 28px);
+  line-height: 1.08;
+  font-weight: 650;
+  letter-spacing: -.035em;
+  text-transform: none;
+}
+
+.topicCard:hover p {
+  color: var(--accent);
+}
+
+.urgentCard p {
+  color: var(--accent);
+}
+
+@media (max-width: 1150px) {
+  .topicCard p {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .topicCard {
+    min-height: 0;
+    grid-template-columns: 38px 1fr 20px;
+    padding: 18px 16px;
+  }
+
+  .cardBody {
+    margin: 0;
+    padding: 0;
+  }
+
+  .topicCard h2 {
+    margin-bottom: 7px;
+    font-size: 9px;
+  }
+
+  .topicCard p {
+    max-width: none;
+    font-size: 19px;
+    line-height: 1.12;
+  }
+}
