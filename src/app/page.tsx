@@ -9,7 +9,7 @@ const situations = [
     icon: "♢",
     category: "Safety",
     text: "Someone is threatening, stalking, controlling or monitoring me.",
-    href: "#safety",
+    href: "/safety",
   },
   {
     icon: "⌂",
