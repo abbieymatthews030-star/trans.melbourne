@@ -3,7 +3,7 @@ const situations = [
     icon: "♡",
     category: "Healthcare",
     text: "I need hormones or a doctor who actually knows trans healthcare.",
-    href: "#healthcare",
+    href: "/healthcare",
   },
   {
     icon: "♢",
