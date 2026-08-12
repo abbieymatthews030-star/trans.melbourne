@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ProblemEnquiryPage from "@/components/ProblemEnquiryPage";
+
+export const metadata: Metadata = {
+  title: "Jobs | trans.melbourne",
+  description:
+    "Finding trans-friendly work, understanding workplace rights, and dealing with discrimination in Melbourne.",
+};
 
 export default function Page() {
   return (
@@ -37,6 +44,34 @@ export default function Page() {
             "Making a complaint",
             "Someone to explain my options",
             "Something else",
+          ],
+        },
+      ]}
+      resources={[
+        {
+          heading: "Employment support and workplace rights",
+          description: "Your employer is not automatically entitled to details about your gender or medical history.",
+          resources: [
+            {
+              name: "Victorian Equal Opportunity and Human Rights Commission",
+              detail: "Free advice on discrimination at work. Complaints and mediation.",
+              link: "https://humanrightscommission.vic.gov.au",
+            },
+            {
+              name: "Fair Work Ombudsman",
+              detail: "Workplace rights, unfair dismissal, and pay disputes.",
+              link: "https://fairwork.gov.au",
+            },
+            {
+              name: "JobWatch",
+              detail: "Free employment legal advice in Victoria. Call 9662 1933.",
+              link: "https://jobwatch.org.au",
+            },
+            {
+              name: "Transgender Victoria",
+              detail: "Advocacy and resources including employment rights information.",
+              link: "https://transgendervictoria.com",
+            },
           ],
         },
       ]}

@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ProblemEnquiryPage from "@/components/ProblemEnquiryPage";
+
+export const metadata: Metadata = {
+  title: "Transition | trans.melbourne",
+  description:
+    "Hormones, surgery, coming out, documents, voice — information about transition for trans people in Melbourne.",
+};
 
 export default function Page() {
   return (
@@ -34,6 +41,34 @@ export default function Page() {
             "Already transitioning",
             "Returning after stopping",
             "I'm unsure",
+          ],
+        },
+      ]}
+      resources={[
+        {
+          heading: "Starting your transition in Melbourne",
+          description: "There is no required order. These resources cover common starting points.",
+          resources: [
+            {
+              name: "Equinox Gender Diverse Health Centre",
+              detail: "Hormones, GP care, nurse practitioners. Fitzroy. Bulk-billing available.",
+              link: "https://equinox.org.au",
+            },
+            {
+              name: "Transgender Victoria",
+              detail: "Guides on legal, medical and social transition in Victoria.",
+              link: "https://transgendervictoria.com",
+            },
+            {
+              name: "Thorne Harbour Health",
+              detail: "LGBTIQ+ health services including counselling and GP care.",
+              link: "https://thorneharbour.org",
+            },
+            {
+              name: "ACON — Trans and gender diverse health",
+              detail: "Transition resources, including hormones, surgery, and navigating services.",
+              link: "https://acon.org.au/trans",
+            },
           ],
         },
       ]}

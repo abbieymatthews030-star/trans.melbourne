@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ProblemEnquiryPage from "@/components/ProblemEnquiryPage";
+
+export const metadata: Metadata = {
+  title: "Healthcare | trans.melbourne",
+  description:
+    "Find a trans-friendly GP, start hormones, get a referral, or work out the next step in your healthcare in Melbourne.",
+};
 
 export default function Page() {
   return (
@@ -49,6 +56,56 @@ export default function Page() {
             "Getting medication sorted",
             "Finding the right specialist",
             "Something else",
+          ],
+        },
+      ]}
+      resources={[
+        {
+          heading: "Trans-friendly healthcare in Melbourne",
+          description:
+            "These services have experience with trans and gender-diverse patients. You don't need a referral to contact most of them.",
+          resources: [
+            {
+              name: "Equinox Gender Diverse Health Centre",
+              detail: "GP and nurse-led trans healthcare, including hormones. Bulk-billing available. Fitzroy.",
+              link: "https://equinox.org.au",
+            },
+            {
+              name: "Thorne Harbour Health",
+              detail: "LGBTIQ+ health services, GP, sexual health, mental health. Melbourne CBD.",
+              link: "https://thorneharbour.org",
+            },
+            {
+              name: "Monash Gender Clinic",
+              detail: "Specialist gender clinic for adults. Public referral via GP required.",
+              link: "https://monashhealth.org/services/gender-clinic/",
+            },
+            {
+              name: "headspace",
+              detail: "Mental health support for people aged 12–25. Multiple Melbourne locations.",
+              link: "https://headspace.org.au",
+            },
+            {
+              name: "Phoenix Australia",
+              detail: "Trans and gender-diverse mental health resources and referral information.",
+              link: "https://phoenixaustralia.org",
+            },
+          ],
+        },
+        {
+          heading: "Telehealth options",
+          description: "If you can't get to Melbourne or prefer online appointments:",
+          resources: [
+            {
+              name: "Endo & Beyond",
+              detail: "Telehealth hormone prescriptions across Victoria. No referral required for initial consult.",
+              link: "https://endoandbeyond.com.au",
+            },
+            {
+              name: "GP2U",
+              detail: "Online GP telehealth — search for trans-affirming practitioners.",
+              link: "https://gp2u.com.au",
+            },
           ],
         },
       ]}

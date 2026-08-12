@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ProblemEnquiryPage from "@/components/ProblemEnquiryPage";
+
+export const metadata: Metadata = {
+  title: "Money & Centrelink | trans.melbourne",
+  description:
+    "Emergency financial assistance, Centrelink help, and money support for trans people in Melbourne.",
+};
 
 export default function Page() {
   return (
@@ -47,6 +54,34 @@ export default function Page() {
             "Help understanding what I'm entitled to",
             "Someone to point me to the right service",
             "Something else",
+          ],
+        },
+      ]}
+      resources={[
+        {
+          heading: "Financial and emergency assistance in Melbourne",
+          description: "If you can't cover basics, try these before waiting for your next Centrelink payment.",
+          resources: [
+            {
+              name: "Centrelink crisis payments",
+              detail: "Apply via myGov or call 132 850. Advance payments and crisis payments available.",
+              link: "https://servicesaustralia.gov.au",
+            },
+            {
+              name: "Good Shepherd Financial Wellbeing",
+              detail: "Emergency relief, no-interest loans (NILS), and financial counselling.",
+              link: "https://goodshep.org.au",
+            },
+            {
+              name: "Foodbank Victoria",
+              detail: "Emergency food relief — check your nearest location online.",
+              link: "https://foodbankvictoria.org.au",
+            },
+            {
+              name: "Financial Counselling Australia",
+              detail: "Free financial counselling. Call 1800 007 007.",
+              link: "https://financialcounsellingaustralia.org.au",
+            },
           ],
         },
       ]}
