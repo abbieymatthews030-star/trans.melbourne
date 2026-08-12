@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 type Enquiry = {
   category?: unknown;
@@ -20,6 +21,41 @@ function clean(value: unknown, max = 3000) {
     .replace(/\0/g, "")
     .trim()
     .slice(0, max);
+}
+
+function buildEmailText(enquiry: {
+  receivedAt: string;
+  category: string;
+  name: string;
+  contactMethod: string;
+  email: string;
+  phone: string;
+  safeTime: string;
+  answers: Record<string, string[]>;
+  other: string;
+}) {
+  const lines: string[] = [
+    `New enquiry — ${enquiry.category}`,
+    `Received: ${enquiry.receivedAt}`,
+    "",
+    `Name: ${enquiry.name || "(not provided)"}`,
+    `Contact method: ${enquiry.contactMethod || "(not provided)"}`,
+    `Email: ${enquiry.email || "(not provided)"}`,
+    `Phone: ${enquiry.phone || "(not provided)"}`,
+    `Safe time to contact: ${enquiry.safeTime || "(not provided)"}`,
+    "",
+    "Answers:",
+  ];
+
+  for (const [key, values] of Object.entries(enquiry.answers)) {
+    lines.push(`  ${key}: ${values.join(", ") || "(none selected)"}`);
+  }
+
+  if (enquiry.other) {
+    lines.push("", `Other notes:`, enquiry.other);
+  }
+
+  return lines.join("\n");
 }
 
 export async function POST(request: NextRequest) {
@@ -90,18 +126,25 @@ export async function POST(request: NextRequest) {
       other,
     };
 
-    /*
-     * TEMPORARY DELIVERY:
-     *
-     * This appears in:
-     * Vercel -> trans-melbourne -> Logs
-     *
-     * Next step is replacing this with email delivery.
-     */
-    console.log(
-      "TRANS_MELBOURNE_ENQUIRY",
-      JSON.stringify(enquiry)
-    );
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const enquiryToEmail = process.env.ENQUIRY_TO_EMAIL;
+
+    if (resendApiKey && enquiryToEmail) {
+      const resend = new Resend(resendApiKey);
+
+      await resend.emails.send({
+        from: "enquiries@trans.melbourne",
+        to: enquiryToEmail,
+        subject: `New enquiry — ${category}`,
+        text: buildEmailText(enquiry),
+      });
+    } else {
+      // Fallback: log to Vercel console when email is not configured.
+      console.log(
+        "TRANS_MELBOURNE_ENQUIRY",
+        JSON.stringify(enquiry)
+      );
+    }
 
     return NextResponse.json({
       ok: true,

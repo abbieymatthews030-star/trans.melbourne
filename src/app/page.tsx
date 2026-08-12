@@ -57,7 +57,7 @@ const situations = [
     icon: "!",
     category: "Urgent help",
     text: "I’m not safe right now and I need help immediately.",
-    href: "#urgent",
+    href: "/urgent",
   },
 ];
 
@@ -136,7 +136,7 @@ export default function Home() {
           <a href="#start">Start here</a>
           <a href="#guides">Guides</a>
           <a href="#about">About</a>
-          <a href="#urgent" className="helpButton">
+          <a href="/urgent" className="helpButton">
             Help now
           </a>
         </nav>
@@ -207,7 +207,12 @@ export default function Home() {
 
             <p>{guide.text}</p>
 
-            <button type="button">Full guide coming next</button>
+            <a
+              className="guideLink"
+              href={guide.id === "urgent" ? "/urgent" : `/${guide.id}`}
+            >
+              Full guide →
+            </a>
           </article>
         ))}
       </section>
