@@ -31,6 +31,10 @@ export const metadata: Metadata = {
     description:
       "Practical information for trans and gender-diverse people in Melbourne. No bullshit.",
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

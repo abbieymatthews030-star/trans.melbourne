@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const situations = [
   {
     icon: "♡",
@@ -129,13 +131,21 @@ export default function Home() {
     <main className="site">
       <header className="header">
         <a href="#top" className="logo">
+          <Image
+            src="/logo.png"
+            alt=""
+            width={36}
+            height={36}
+            className="logoMark"
+            priority
+          />
           trans.melbourne
         </a>
 
         <nav className="nav" aria-label="Main navigation">
           <a href="#start">Start here</a>
           <a href="#guides">Guides</a>
-          <a href="#about">About</a>
+          <a href="/about">About</a>
           <a href="/urgent" className="helpButton">
             Help now
           </a>
@@ -218,11 +228,13 @@ export default function Home() {
       </section>
 
       <footer className="footer" id="about">
-        <section>
+        <section id="about">
           <h3>About trans.melbourne</h3>
           <p>
             Built to get you to the answer faster.
             This is information, not individual medical or legal advice.
+            <br />
+            <a href="/about">Who built this, and why →</a>
           </p>
         </section>
 

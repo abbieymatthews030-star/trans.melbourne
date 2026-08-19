@@ -65,9 +65,67 @@ export default function Page() {
               link: "https://thorneharbour.org",
             },
             {
-              name: "ACON — Trans and gender diverse health",
-              detail: "Transition resources, including hormones, surgery, and navigating services.",
-              link: "https://acon.org.au/trans",
+              name: "TransHub",
+              detail: "National, trans-led guides covering every part of transition in plain language.",
+              link: "https://www.transhub.org.au",
+            },
+          ],
+        },
+        {
+          heading: "Voice",
+          description: "Voice training is optional, not a requirement. If you want it, these are real starting points.",
+          resources: [
+            {
+              name: "Victorian Pride Centre — voice and communication training",
+              detail: "Melbourne-based speech pathology for exploring your voice and communication.",
+              link: "https://pridecentre.org.au/resources/gender-affirming-voice-training/",
+            },
+            {
+              name: "Gender Voice Centre",
+              detail: "Speech pathology for gender-affirming voice, by telehealth across Australia.",
+              link: "https://www.gendervoicecentre.com.au",
+            },
+            {
+              name: "TransHub — voice",
+              detail: "What voice training actually involves and how to decide if you want it.",
+              link: "https://www.transhub.org.au/social/voice/",
+            },
+          ],
+        },
+        {
+          heading: "Hair removal & costs",
+          description: "Medicare doesn't cover laser or electrolysis as a standalone item. Here's what actually affects the cost.",
+          resources: [
+            {
+              name: "TransHub — Medicare and billing",
+              detail: "Plain breakdown of what Medicare does and doesn't cover for gender-affirming care.",
+              link: "https://www.transhub.org.au/medical/medicare-and-billing/",
+            },
+            {
+              name: "Monash Gender Clinic",
+              detail: "Public gender clinic that can refer for laser hair removal as part of a transition pathway.",
+              link: "https://monashhealth.org/services/gender-clinic/",
+            },
+          ],
+        },
+        {
+          heading: "Coming out & family support",
+          description: "You don't have to come out to everyone at once, or ever, if it isn't safe.",
+          resources: [
+            {
+              name: "TransHub — coming out",
+              detail: "Practical guide to coming out (or 'inviting people in') to family, friends and work.",
+              link: "https://www.transhub.org.au/coming-out",
+            },
+            {
+              name: "Rainbow Door",
+              detail: "Free Victorian LGBTIQA+ helpline for advice and referrals. Call 1800 729 367 or text 0480 017 246, 10am–5pm daily.",
+              link: "https://www.rainbowdoor.org.au",
+            },
+            {
+              name: "PFLAG Australia",
+              detail: "Peer support for parents, families and friends learning how to support a trans loved one.",
+              link: "https://pflagaustralia.org.au",
             },
           ],
         },
